@@ -11,7 +11,7 @@ class MessageDataSourceImpl(
 
     override suspend fun getAllMessage(): List<Message> {
         return messages.find()
-            .descendingSort(Message::timesTamp)
+            .descendingSort(Message::timestamp)
             .toList()
     }
 

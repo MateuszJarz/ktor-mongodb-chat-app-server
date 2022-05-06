@@ -22,7 +22,7 @@ class RoomController(
             throw MemberAlreadyExistsException()
         }
         members[username] = Member(
-            userName = username,
+            username = username,
             sessionId = sessionId,
             socket = socket
         )
@@ -32,8 +32,8 @@ class RoomController(
         members.values.forEach { member ->
             val messageEntity = Message(
                 text = message,
-                userName = senderUsername,
-                timesTamp = System.currentTimeMillis()
+                username = senderUsername,
+                timestamp = System.currentTimeMillis()
             )
             messageDataSource.insertMessage(messageEntity)
 
@@ -48,7 +48,7 @@ class RoomController(
 
     suspend fun tryDisconnect(username: String){
         members[username]?.socket?.close()
-        if(members.contains(username)){
+        if(members.containsKey(username)){
             members.remove(username)
         }
     }

@@ -12,7 +12,7 @@ data class Message(
     val id: String = ObjectId().toString(),
 
     val text: String,
-    val userName: String,
-    val timesTamp: Long
+    val username: String,
+    val timestamp: Long
 
 )
